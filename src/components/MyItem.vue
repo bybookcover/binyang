@@ -2,6 +2,9 @@
   <li>
     <label>
       <input type="checkbox" :checked = "todo.done" @change="handleCheck(todo.id)"/>
+      <!-- 如下代码也能实现功能，但是不太推荐，因为修改了Props的值 -->
+      <!-- <input type="checkbox" v-model="todo.done"/> -->
+
       <span>{{todo.title}}</span>
     </label>
     <button class="btn btn-danger" style="display:none">删除</button>
