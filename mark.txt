@@ -1,0 +1,4 @@
+添加远程版本库：
+
+git remote add [shortname] [url]
+shortname 为本地的版本库，例如：
