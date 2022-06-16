@@ -1,7 +1,8 @@
 # 使用nanoid 自动生成id序列
 
-<html>
-<script>
+
+
+```
 import {nanoid} from 'nanoid'
 export default {
   name: 'MyHeader',
@@ -10,7 +11,4 @@ export default {
       const todoObj = {id:nanoid(),title:e.target.value,done:false}
     }
   }
-}
-</script>
-
-</html>
+```
