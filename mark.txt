@@ -1,4 +1,10 @@
-添加远程版本库：
 
+//添加远程版本库：
 git remote add [shortname] [url]
 shortname 为本地的版本库，例如：
+
+//取消代理 
+PS D:\vue1.0\binyang> git config --global --unset  https.proxy
+
+//拉取远程仓库信息 git pull <远程地址> <远程分支名称>:<本地分支名称>
+PS D:\vue1.0\binyang> git  pull https://github.com/bybookcover/binyang.git master:master
