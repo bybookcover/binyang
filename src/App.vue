@@ -27,11 +27,7 @@ export default {
   },
    data(){
       return{
-        todos:[
-          {id:'001',title:'抽烟',done:true},
-          {id:'002',title:'喝酒',done:false},
-          {id:'003',title:'开车',done:true},
-        ]
+        todos: JSON.parse(localStorage.getItem('todos')) || []
       }
     },
     methods:{
@@ -61,6 +57,17 @@ export default {
         this.todos = this.todos.filter((todo)=>{
           return !todo.done
         })
+      }
+    },
+    watch: {
+      // todos(value){
+      //   localStorage.setItem('todos',JSON.stringify(value))
+      // }
+      todos:{
+        handler(value){
+          localStorage.setItem('todos',JSON.stringify(value))
+        },
+        deep:true
       }
     }
 }
