@@ -5,9 +5,18 @@
       <!-- 如下代码也能实现功能，但是不太推荐，因为修改了Props的值 -->
       <!-- <input type="checkbox" v-model="todo.done"/> -->
 
-      <span>{{todo.title}}</span>
+      <span v-show="!todo.isEdit">{{todo.title}}</span>
+      <input
+       v-show="todo.isEdit" 
+       type="text" 
+       :value="todo.title"
+       @blur="handleBlur(todo,$event)"
+       ref="inputTitle"
+       >
     </label>
+    
     <button class="btn btn-danger" @click="handleDelete(todo.id)">删除</button>
+    <button v-show="!todo.isEdit" class="btn btn-edit" @click="handleEdit(todo)">编辑</button>
   </li>
 </template>
 
@@ -28,6 +37,24 @@ export default {
         // this.deleteTodo(id)
           this.$bus.$emit('deleteTodo',id)
       }
+    },
+    handleEdit(todo){
+      if(todo.hasOwnProperty('isEdit')){
+        todo.isEdit = true
+      }else{
+        console.log('@')
+        this.$set(todo,'isEdit',true)
+      }
+      this.$nextTick(function(){
+        this.$refs.inputTitle.focus()
+      })
+      
+    },
+    //失去焦点回调
+    handleBlur(todo,e){
+      todo.isEdit = false
+      if(!e.target.value.trim()) return alert('输入数据不能为空')
+      this.$bus.$emit('updataTodo',todo.id,e.target.value)
     }
   }
 }
