@@ -14,17 +14,19 @@
 <script>
 export default {
   name: 'MyItem' ,
-  props:['todo','checkTodo','deleteTodo'],
+  props:['todo'],
   methods:{
     //勾选
     handleCheck(id){
       // 将todo对象的done值取反
-      this.checkTodo(id)
+      // this.checkTodo(id)
+      this.$bus.$emit('checkTodo',id)
     },
     // 删除
     handleDelete(id){
       if(confirm("确认删除吗")){
-        this.deleteTodo(id)
+        // this.deleteTodo(id)
+          this.$bus.$emit('deleteTodo',id)
       }
     }
   }

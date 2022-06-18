@@ -19,7 +19,7 @@ export default {
       if(!this.title.trim()) return alert('输入数据不能为空')
       const todoObj = {id:nanoid(),title:this.title,done:false}
       // 添加对象
-      this.$emit('addTodo',todoObj).
+      this.$emit('addTodo',todoObj)
       //清空数据
       this.title = ''
     }
